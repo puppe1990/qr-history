@@ -5,7 +5,6 @@
   <%= @history.title %>
 </p>
 <p><p><%= @history.content %></p></p>
-<p><%= image_tag(@history.generate_qrcode.to_img.resize(150, 150).to_data_url) %>
 
 <%= link_to 'Edit', edit_history_path(@history) %> |
 <%= link_to 'Back', histories_path %>
