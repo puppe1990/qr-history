@@ -1,0 +1,5 @@
+<%= form_tag(create_qr_payment_path, class: 'form-group') do %>
+  <%= label_tag(:quantity, "Quantidade de QRs:") %>
+  <%= text_field_tag(:quantity) %>
+  <%= submit_tag("Enviar") %>
+<% end %>
