@@ -16,8 +16,8 @@ class PaymentsController < ApplicationController
     request["X-Picpay-Token"] = ENV["X-Picpay-Token"]
     request.body = JSON.dump({
       "referenceId" => "10",
-      "callbackUrl" => "#{request.host}/callback",
-      "returnUrl" => "#{request.host}/histories/index",
+      "callbackUrl" => "#{ENV['host_url']}/callback",
+      "returnUrl" => "#{ENV['host_url']}/histories/index",
       "value" => total,
       "expiresAt" => "2022-05-01T16:00:00-03:00",
       "buyer" => {
