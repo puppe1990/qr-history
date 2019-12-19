@@ -18,8 +18,8 @@ class PaymentsController < ApplicationController
     request["X-Picpay-Token"] = ENV["X-Picpay-Token"]
     request.body = JSON.dump({
       "referenceId" => (15 + @sale.id).to_s,
-      "callbackUrl" => "#{ENV['host_url']}/callback",
-      "returnUrl" => "#{ENV['host_url']}/histories/index",
+      "callbackUrl" => "https://conte-sua-historia.herokuapp.com/callback",
+      "returnUrl" => "https://conte-sua-historia.herokuapp.com",
       "value" => total,
       "expiresAt" => "2022-05-01T16:00:00-03:00",
       "buyer" => {
@@ -45,8 +45,10 @@ class PaymentsController < ApplicationController
   end
 
   def callback
-    params["referenceId"]
-    params["authorizationId"]
+    puts params 'callback 48'
+    puts params
+    puts params["referenceId"]
+    puts params["authorizationId"]
   end
 
   private
