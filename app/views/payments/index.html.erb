@@ -3,9 +3,19 @@
   <%= text_field_tag(:quantity) %>
   <%= submit_tag("Enviar") %>
 <% end %>
+<table>
+  <tr>
+    <th>ID Venda</th>
+    <th>Preço</th>
+    <th>Total</th>
+    <th>Status da Venda</th>
+  </tr>
 <% @sales.each do |sale|%>
-  <%= sale.id %>
-  <%= sale.price %>
-  <%= sale.total %>
-  <%= sale.status %>
+  <tr>
+    <td><%= sale.id %></td>
+    <td><%= sale.price %></td>
+    <td><%= sale.total %></td>
+    <td><%= sale.status %></td>
+  </tr>
 <% end %>
+</table>
