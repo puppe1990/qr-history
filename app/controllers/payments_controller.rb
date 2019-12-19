@@ -1,6 +1,8 @@
 class PaymentsController < ApplicationController
 
   skip_before_action :verify_authenticity_token
+  skip_before_action :authenticate_user! :except => [:callback]
+
   def index
     @sales = Sale.where(user_id: current_user.id)
     respond_to do |format|
