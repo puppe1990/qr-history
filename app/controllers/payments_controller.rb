@@ -2,6 +2,7 @@ class PaymentsController < ApplicationController
 
   skip_before_action :verify_authenticity_token
   def index
+    @sales = Sale.where(user_id: current_user.id)
     respond_to do |format|
       format.html
     end
@@ -10,22 +11,23 @@ class PaymentsController < ApplicationController
   def create_qr_payment
     price = 0.01
     total = price * params[:quantity].to_i
+    @sale = Sale.create(quantity: params[:quantity].to_i, price: price, total: total, status: 'pending')
     uri = URI.parse("https://appws.picpay.com/ecommerce/public/payments")
     request = Net::HTTP::Post.new(uri)
     request.content_type = "application/json"
     request["X-Picpay-Token"] = ENV["X-Picpay-Token"]
     request.body = JSON.dump({
-      "referenceId" => "10",
+      "referenceId" => (10 + @sale.id).to_s,
       "callbackUrl" => "#{ENV['host_url']}/callback",
       "returnUrl" => "#{ENV['host_url']}/histories/index",
       "value" => total,
       "expiresAt" => "2022-05-01T16:00:00-03:00",
       "buyer" => {
-        "firstName" => "Matheus",
-        "lastName" => "Puppe",
-        "document" => "023.997.080-24",
-        "email" => "matheus.puppe@gmail.com",
-        "phone" => "+55 11 99559-7242"
+        "firstName" => current_user.first_name.to_s,
+        "lastName" => current_user.last_name.to_s,
+        "document" => current_user.cpf.to_s,
+        "email" => current_user.email.to_s,
+        "phone" => current_user.phone.to_s
       }
     })
 
