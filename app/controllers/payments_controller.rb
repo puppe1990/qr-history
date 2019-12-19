@@ -11,13 +11,13 @@ class PaymentsController < ApplicationController
   def create_qr_payment
     price = 0.01
     total = price * params[:quantity].to_i
-    @sale = Sale.create(quantity: params[:quantity].to_i, price: price, total: total, status: 'pending')
+    @sale = Sale.create(quantity: params[:quantity].to_i, price: price, total: total, user_id: current_user.id, status: 'pending')
     uri = URI.parse("https://appws.picpay.com/ecommerce/public/payments")
     request = Net::HTTP::Post.new(uri)
     request.content_type = "application/json"
     request["X-Picpay-Token"] = ENV["X-Picpay-Token"]
     request.body = JSON.dump({
-      "referenceId" => (15 + @sale.id).to_s,
+      "referenceId" => (10 + @sale.id).to_s,
       "callbackUrl" => "https://conte-sua-historia.herokuapp.com/callback",
       "returnUrl" => "https://conte-sua-historia.herokuapp.com",
       "value" => total,
