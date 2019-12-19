@@ -17,7 +17,7 @@ class PaymentsController < ApplicationController
     request.content_type = "application/json"
     request["X-Picpay-Token"] = ENV["X-Picpay-Token"]
     request.body = JSON.dump({
-      "referenceId" => (10 + @sale.id).to_s,
+      "referenceId" => (11 + @sale.id).to_s,
       "callbackUrl" => "https://conte-sua-historia.herokuapp.com/payments/callback",
       "returnUrl" => "https://conte-sua-historia.herokuapp.com",
       "value" => total,
