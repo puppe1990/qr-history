@@ -45,10 +45,19 @@ class PaymentsController < ApplicationController
   end
 
   def callback
-    puts params 'callback 48'
-    puts params
-    puts params["referenceId"]
-    puts params["authorizationId"]
+    uri = URI.parse("https://appws.picpay.com/ecommerce/public/payments/#{params["referenceId"]}/status")
+    request = Net::HTTP::Get.new(uri)
+    request.content_type = "application/json"
+    request["X-Picpay-Token"] = ENV["X-Picpay-Token"]
+    
+    req_options = {
+      use_ssl: uri.scheme == "https",
+    }
+    
+    response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+      http.request(request)
+    end
+    @sale = Sale.update(status: response['status'])
   end
 
   private

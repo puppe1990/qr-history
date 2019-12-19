@@ -28,6 +28,7 @@ gem 'image_processing', '~> 1.2'
 gem 'rqrcode'
 gem 'rqrcode_png'
 gem 'devise'
+gem 'picpay', :git => 'https://github.com/gilcierweb/picpay'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
