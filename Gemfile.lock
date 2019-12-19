@@ -1,9 +1,3 @@
-GIT
-  remote: https://github.com/gilcierweb/picpay
-  revision: e4bd31a99dffac0f108833d6c4764bd5778689b5
-  specs:
-    picpay (0.1.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -240,7 +234,6 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
-  picpay!
   puma (~> 4.1)
   rails (~> 6.0.2)
   rqrcode
