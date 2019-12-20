@@ -25,6 +25,7 @@
       <%= link_to "Registrar-se", new_user_registration_path, :class => 'navbar-link'  %> |
       <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
     <% end %>
+    <p><%= link_to "Minhas Histórias", histories_path, :class => 'navbar-link' %></p>
     <p><%= link_to "Comprar QR Code", index_path, :class => 'navbar-link' %></p>
     <%= yield %>
   </body>
