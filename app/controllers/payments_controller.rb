@@ -75,7 +75,7 @@ class PaymentsController < ApplicationController
 
   def create_histories
     for i in 1..@sale.quantity do
-      History.create(title: "Historia número #{i}")
+      History.create(title: "Historia número #{i}", user_id: @sale.user_id)
     end
   end
 end
