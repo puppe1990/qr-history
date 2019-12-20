@@ -4,7 +4,7 @@ class HistoriesController < ApplicationController
   # GET /histories
   # GET /histories.json
   def index
-    @histories = History.all
+    @histories = History.where(user_id: current_user.id)
   end
 
   # GET /histories/1

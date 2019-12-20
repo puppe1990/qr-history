@@ -63,6 +63,7 @@ class PaymentsController < ApplicationController
     end
     response = JSON.parse(response.body)
     @sale.update(status: response['status'])
+    create_histories if response['status'] = 'paid'
   end
 
   private
@@ -70,5 +71,11 @@ class PaymentsController < ApplicationController
   def payment_params
     params.require(:pic_pay_payment)
           .permit(:quantity)
+  end
+
+  def create_histories
+    for i in 1..sale.quantity do
+      History.create(title: "Historia número #{i}")
+    end
   end
 end
