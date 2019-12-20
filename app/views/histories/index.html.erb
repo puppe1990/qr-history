@@ -16,9 +16,9 @@
       <tr>
         <td><%= history.title %></td>
         <td><%= image_tag(history.generate_qrcode.to_img.resize(150, 150).to_data_url) %></td>
-        <td><%= link_to 'Show', history %></td>
+        <td><%#= link_to 'Show', history %></td>
         <td><%= link_to 'Edit', edit_history_path(history) %></td>
-        <td><%= link_to 'Destroy', history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%#= link_to 'Destroy', history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New History', new_history_path %>
+<%#= link_to 'New History', new_history_path %>
