@@ -1,5 +1,6 @@
 class HistoriesController < ApplicationController
   before_action :set_history, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, :only => [:show]
 
   # GET /histories
   # GET /histories.json
