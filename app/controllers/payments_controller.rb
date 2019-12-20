@@ -63,7 +63,7 @@ class PaymentsController < ApplicationController
     end
     response = JSON.parse(response.body)
     @sale.update(status: response['status'])
-    create_histories if response['status'] = 'paid'
+    create_histories if response['status'] == 'paid'
   end
 
   private
