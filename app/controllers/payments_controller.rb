@@ -14,7 +14,7 @@ class PaymentsController < ApplicationController
     price = 0.01
     total = price * params[:quantity].to_i
     reference_id = rand(100..1000000)
-    @sale = Sale.create(reference_id: reference_id, quantity: params[:quantity].to_i, price: price, total: total, user_id: current_user.id, status: 'pending')
+    @sale = Sale.create(reference_id: reference_id.to_s, quantity: params[:quantity].to_i, price: price, total: total, user_id: current_user.id, status: 'pending')
     uri = URI.parse("https://appws.picpay.com/ecommerce/public/payments")
     request = Net::HTTP::Post.new(uri)
     request.content_type = "application/json"
