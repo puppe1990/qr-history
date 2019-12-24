@@ -6,6 +6,6 @@ class History < ApplicationRecord
   require 'rqrcode_png'
 
   def generate_qrcode
-    qrcode = RQRCode::QRCode.new("https://conte-sua-historia.herokuapp.com/histories/#{id}")
+    qrcode = RQRCode::QRCode.new(self.short)
   end
 end

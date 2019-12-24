@@ -14,7 +14,7 @@
     <% @histories.each do |history| %>
       <tr>
         <td><%= history.title %></td>
-        <td><%= image_tag(Link.find(history.id).short.generate_qrcode.to_img.resize(150, 150).to_data_url) %></td>
+        <td><%= image_tag(Link.find(history.id).generate_qrcode.to_img.resize(150, 150).to_data_url) %></td>
         <td><%#= link_to 'Show', history %></td>
         <td><%= link_to 'Edit', edit_history_path(history) %></td>
         <td><%#= link_to 'Destroy', history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
