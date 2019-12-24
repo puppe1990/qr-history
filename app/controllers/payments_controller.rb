@@ -76,7 +76,7 @@ class PaymentsController < ApplicationController
 
   def create_histories
     (1..@sale.quantity).each do |i|
-      history = History.create(title: "Historia número #{i}", user_id: @sale.user_id)
+      history = History.create(title: "Pedido - #{@sale.reference_id} - Historia número #{i}", user_id: @sale.user_id)
       Link.create(id: history.id, url: "#{ENV['host_url']}histories/#{history.id}")
     end
   end
