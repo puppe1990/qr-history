@@ -22,8 +22,8 @@ class PaymentsController < ApplicationController
     request['X-Picpay-Token'] = ENV['X-Picpay-Token']
     request.body = JSON.dump(
       'referenceId' => reference_id.to_s,
-      'callbackUrl' => 'https://conte-sua-historia.herokuapp.com/payments/callback',
-      'returnUrl' => 'https://conte-sua-historia.herokuapp.com',
+      'callbackUrl' => "#{ENV['host_url']}/payments/callback",
+      'returnUrl' => "#{ENV['host_url']}",
       'value' => total,
       'expiresAt' => '2022-05-01T16:00:00-03:00',
       'buyer' => {
@@ -76,7 +76,8 @@ class PaymentsController < ApplicationController
 
   def create_histories
     (1..@sale.quantity).each do |i|
-      History.create(title: "Historia número #{i}", user_id: @sale.user_id)
+      history = History.create(title: "Historia número #{i}", user_id: @sale.user_id)
+      Link.create(id: history.id, url: "#{ENV['host_url']}/histories/#{history.id}")
     end
   end
 end
