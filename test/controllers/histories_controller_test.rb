@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class HistoriesControllerTest < ActionDispatch::IntegrationTest
@@ -5,17 +7,17 @@ class HistoriesControllerTest < ActionDispatch::IntegrationTest
     @history = histories(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get histories_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_history_url
     assert_response :success
   end
 
-  test "should create history" do
+  test 'should create history' do
     assert_difference('History.count') do
       post histories_url, params: { history: { title: @history.title } }
     end
@@ -23,22 +25,22 @@ class HistoriesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to history_url(History.last)
   end
 
-  test "should show history" do
+  test 'should show history' do
     get history_url(@history)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_history_url(@history)
     assert_response :success
   end
 
-  test "should update history" do
+  test 'should update history' do
     patch history_url(@history), params: { history: { title: @history.title } }
     assert_redirected_to history_url(@history)
   end
 
-  test "should destroy history" do
+  test 'should destroy history' do
     assert_difference('History.count', -1) do
       delete history_url(@history)
     end

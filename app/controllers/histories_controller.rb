@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class HistoriesController < ApplicationController
-  before_action :set_history, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authenticate_user!, :only => [:show]
+  before_action :set_history, only: %i[show edit update destroy]
+  skip_before_action :authenticate_user!, only: [:show]
 
   # GET /histories
   # GET /histories.json
@@ -10,8 +12,7 @@ class HistoriesController < ApplicationController
 
   # GET /histories/1
   # GET /histories/1.json
-  def show
-  end
+  def show; end
 
   # GET /histories/new
   def new
@@ -19,8 +20,7 @@ class HistoriesController < ApplicationController
   end
 
   # GET /histories/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /histories
   # POST /histories.json
@@ -63,13 +63,14 @@ class HistoriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_history
-      @history = History.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def history_params
-      params.require(:history).permit(:title, :content)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_history
+    @history = History.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def history_params
+    params.require(:history).permit(:title, :content)
+  end
 end

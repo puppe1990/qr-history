@@ -1,43 +1,45 @@
-require "application_system_test_case"
+# frozen_string_literal: true
+
+require 'application_system_test_case'
 
 class HistoriesTest < ApplicationSystemTestCase
   setup do
     @history = histories(:one)
   end
 
-  test "visiting the index" do
+  test 'visiting the index' do
     visit histories_url
-    assert_selector "h1", text: "Histories"
+    assert_selector 'h1', text: 'Histories'
   end
 
-  test "creating a History" do
+  test 'creating a History' do
     visit histories_url
-    click_on "New History"
+    click_on 'New History'
 
-    fill_in "Title", with: @history.title
-    click_on "Create History"
+    fill_in 'Title', with: @history.title
+    click_on 'Create History'
 
-    assert_text "History was successfully created"
-    click_on "Back"
+    assert_text 'History was successfully created'
+    click_on 'Back'
   end
 
-  test "updating a History" do
+  test 'updating a History' do
     visit histories_url
-    click_on "Edit", match: :first
+    click_on 'Edit', match: :first
 
-    fill_in "Title", with: @history.title
-    click_on "Update History"
+    fill_in 'Title', with: @history.title
+    click_on 'Update History'
 
-    assert_text "History was successfully updated"
-    click_on "Back"
+    assert_text 'History was successfully updated'
+    click_on 'Back'
   end
 
-  test "destroying a History" do
+  test 'destroying a History' do
     visit histories_url
     page.accept_confirm do
-      click_on "Destroy", match: :first
+      click_on 'Destroy', match: :first
     end
 
-    assert_text "History was successfully destroyed"
+    assert_text 'History was successfully destroyed'
   end
 end
