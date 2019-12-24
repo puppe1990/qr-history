@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Link < ActiveRecord::Base
+  require 'rqrcode'
+  require 'rqrcode_png'
   validates_presence_of :url
   validates :url, format: URI.regexp(%w[http https])
   validates_uniqueness_of :slug
@@ -29,5 +31,9 @@ class Link < ActiveRecord::Base
     return link.short if link.save
 
     Link.shorten(url, slug + SecureRandom.uuid[0..2])
+  end
+
+  def generate_qrcode
+    qrcode = RQRCode::QRCode.new(self.short)
   end
 end
