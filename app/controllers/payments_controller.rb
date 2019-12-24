@@ -12,7 +12,7 @@ class PaymentsController < ApplicationController
   end
 
   def create_qr_payment
-    price = 0.01
+    price = 5.00
     total = price * params[:quantity].to_i
     reference_id = rand(100..1_000_000)
     @sale = Sale.create(reference_id: reference_id.to_s, quantity: params[:quantity].to_i, price: price, total: total, user_id: current_user.id, status: 'pending')
