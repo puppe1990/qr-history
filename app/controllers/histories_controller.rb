@@ -12,7 +12,9 @@ class HistoriesController < ApplicationController
 
   # GET /histories/1
   # GET /histories/1.json
-  def show; end
+  def show
+    render layout: false
+  end
 
   # GET /histories/new
   def new
