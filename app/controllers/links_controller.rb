@@ -1,5 +1,7 @@
 class LinksController < ApplicationController
   
+  skip_before_action :authenticate_user!, only: [:show]
+  
   def show
     @link = Link.find_by_slug(params[:slug]) 
     render 'errors/404', status: 404 if @link.nil?

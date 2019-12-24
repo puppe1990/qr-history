@@ -34,6 +34,6 @@ class Link < ActiveRecord::Base
   end
 
   def generate_qrcode
-    qrcode = RQRCode::QRCode.new(self.short)
+    RQRCode::QRCode.new(short)
   end
 end
