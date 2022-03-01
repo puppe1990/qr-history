@@ -27,7 +27,7 @@ gem 'actiontext'
 
 # Use Active Storage variant
 gem 'devise'
-gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.12'
 gem 'rqrcode'
 gem 'rqrcode_png'
 
