@@ -131,14 +131,14 @@ GEM
       digest
       net-protocol
       timeout
-    nio4r (2.5.8)
+    nio4r (2.5.9)
     nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.1.4)
     public_suffix (4.0.6)
-    puma (4.3.12)
+    puma (5.6.7)
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.6.2)
@@ -248,7 +248,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  actiontext (>= 6.1.7.1)
+  actiontext (>= 6.1.7.3)
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 3.29.0)
@@ -257,8 +257,8 @@ DEPENDENCIES
   jbuilder (~> 2.9, >= 2.9.1)
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
-  puma (~> 4.3)
-  rails (~> 6.1.7, >= 6.1.7.1)
+  puma (~> 5.6)
+  rails (~> 6.1.7, >= 6.1.7.3)
   rqrcode
   rqrcode_png
   sass-rails (>= 6.0.0)
